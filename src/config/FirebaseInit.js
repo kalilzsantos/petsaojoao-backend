@@ -5,7 +5,7 @@ class FirebaseInit {
   static init() {
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
-      databaseURL: process.env.DB_URL,
+      databaseURL: "https://petsaojoao-86487.firebaseio.com",
     });
   }
 }
