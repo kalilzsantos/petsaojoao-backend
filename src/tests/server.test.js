@@ -7,7 +7,7 @@ afterAll(() => {
 
 describe("initial tests", () => {
   test("api route", async () => {
-    const response = await request(server).get("/api");
+    const response = await request(server).get("/");
     expect(response.status).toEqual(200);
   });
 });

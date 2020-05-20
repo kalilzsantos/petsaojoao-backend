@@ -1,18 +1,50 @@
 version: '3.7'
 services:
-  web:
-    build: .
-    command: npm run dev
-    volumes:
-      - .:/usr/app/
-      - /usr/app/node_modules
+  node:
+    build:
+      context: .
+      dockerfile: .docker/$NODE_ENV/node.dockerfile
+    environment:
+      NODE_ENV: $NODE_ENV
+      DB_HOST: $DB_HOST
+      DB_USERNAME: $DB_USERNAME
+      DB_PASSWORD: $DB_PASSWORD
+      DB_NAME: $DB_NAME
     ports:
-      - "3000:3000"
+      - '3000:3000'
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
     depends_on:
       - postgres
+    networks:
+      - default-network
   postgres:
     image: postgres:12
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_DB: petsaojoao_dev
-      POSTGRES_PASSWORD: example
+      POSTGRES_USER: $DB_USERNAME
+      POSTGRES_PASSWORD: $DB_PASSWORD
+      POSTGRES_DB: $DB_NAME
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres-volume:/var/lib/postgresql/data
+    networks:
+      - default-network
+  pgadmin4:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: $PGADMIN_EMAIL
+      PGADMIN_DEFAULT_PASSWORD: $PGADMIN_PASSWORD
+    ports:
+      - '15432:80'
+    volumes:
+      - pgadmin4-volume:/var/lib/pgadmin
+    networks:
+      - default-network
+networks:
+  default-network:
+    driver: bridge
+volumes:
+  postgres-volume:
+  pgadmin4-volume:
