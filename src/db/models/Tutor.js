@@ -33,8 +33,9 @@ export default class Tutor extends Model {
           allowNull: false,
           type: DataTypes.STRING(100),
         },
-        number: DataTypes.INTEGER,
+        number: DataTypes.STRING(30),
         area: DataTypes.STRING(100),
+        complement: DataTypes.STRING(30),
       },
       { sequelize, tableName: "tutors", modelName: "Tutor" }
     );

@@ -3,7 +3,7 @@ import models from "../db/models";
 export default {
   async show(req, res) {
     try {
-      const { tutorId } = req.body;
+      const { tutorId } = req.parms;
 
       const tutor = await models.Tutor.findByPk(tutorId);
 
