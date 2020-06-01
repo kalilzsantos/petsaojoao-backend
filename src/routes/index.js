@@ -4,7 +4,6 @@ import SpecieController from "../controllers/SpecieController";
 import BreedController from "../controllers/BreedController";
 import PetController from "../controllers/PetController";
 import PetPhotoController from "../controllers/PetPhotoController";
-import AnalyticsController from "../controllers/AnalyticsController";
 
 const routes = express.Router();
 
@@ -16,7 +15,6 @@ routes.post("/tutors/:tutorId/pets", PetController.store);
 routes.get("/tutors/:tutorId/pets", PetController.index);
 routes.post("/pets/:petId/photos", PetPhotoController.store);
 routes.get("/pets/:petId/photos", PetPhotoController.index);
-routes.get("/analytics", AnalyticsController.index);
 
 routes.get("/", (req, res) => {
   res.json({ message: "API Route" });
