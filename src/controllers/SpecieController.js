@@ -5,7 +5,7 @@ export default {
     try {
       const species = await models.Specie.findAll();
 
-      if (!species.length) {
+      if (!species) {
         return res.status(400).json({ message: "Species does not exists" });
       }
 
