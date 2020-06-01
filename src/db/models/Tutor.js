@@ -40,4 +40,8 @@ export default class Tutor extends Model {
       { sequelize, tableName: "tutors", modelName: "Tutor" }
     );
   }
+
+  static associate(models) {
+    Tutor.hasMany(models.Pet);
+  }
 }

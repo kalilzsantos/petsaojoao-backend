@@ -12,7 +12,7 @@ const sequelize = new Sequelize(
   config[env]
 );
 
-export default Object.assign(
+const models = Object.assign(
   {},
   ...fs
     .readdirSync(__dirname)
@@ -25,8 +25,15 @@ export default Object.assign(
     })
     .map(function (file) {
       const model = require(path.join(__dirname, file)).default;
+
       return {
         [model.name]: model.init(sequelize, DataTypes),
       };
     })
 );
+
+Object.values(models)
+  .filter((model) => typeof model.associate === "function")
+  .forEach((model) => model.associate(models));
+
+export default models;

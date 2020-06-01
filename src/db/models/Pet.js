@@ -59,4 +59,8 @@ export default class Pet extends Model {
       { sequelize, tableName: "pets", modelName: "Pet" }
     );
   }
+
+  static associate(models) {
+    Pet.hasMany(models.PetPhoto);
+  }
 }
