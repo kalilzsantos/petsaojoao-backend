@@ -20,4 +20,10 @@ export default class FoundPetPhoto extends Model {
       { sequelize, tableName: "found_pet_photos", modelName: "FoundPetPhoto" }
     );
   }
+
+  static associate(models) {
+    this.belongsTo(models.FoundPet, {
+      foreignKey: "found_pet_id",
+    });
+  }
 }

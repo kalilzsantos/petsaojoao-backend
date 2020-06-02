@@ -32,4 +32,13 @@ export default class FoundPet extends Model {
       { sequelize, tableName: "found_pets", modelName: "FoundPet" }
     );
   }
+
+  static associate(models) {
+    this.hasMany(models.FoundPetPhoto, {
+      foreignKey: "found_pet_id",
+    });
+    this.belongsTo(models.Tutor, {
+      foreignKey: "tutor_id",
+    });
+  }
 }
