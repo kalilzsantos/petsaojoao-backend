@@ -1,5 +1,5 @@
 import { Model } from "sequelize";
-
+import { getDateToday } from "../../utils/date";
 export default class Pet extends Model {
   static init(sequelize, DataTypes) {
     return super.init(
@@ -58,5 +58,19 @@ export default class Pet extends Model {
       },
       { sequelize, tableName: "pets", modelName: "Pet" }
     );
+  }
+
+  static getTotal() {
+    return Pet.count();
+  }
+
+  static getTotalToday() {
+    return Pet.count({
+      where: Pet.sequelize.where(
+        Pet.sequelize.fn("date", Pet.sequelize.col("created_at")),
+        "=",
+        getDateToday()
+      ),
+    });
   }
 }
