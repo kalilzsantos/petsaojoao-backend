@@ -72,5 +72,8 @@ export default class Pet extends Model {
         getDateToday()
       ),
     });
+
+  static associate(models) {
+    Pet.hasMany(models.PetPhoto);
   }
 }

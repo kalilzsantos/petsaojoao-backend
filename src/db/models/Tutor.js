@@ -54,5 +54,8 @@ export default class Tutor extends Model {
         getDateToday()
       ),
     });
+
+  static associate(models) {
+    Tutor.hasMany(models.Pet);
   }
 }

@@ -12,7 +12,7 @@ export default {
 
       const pets = await tutor.getPets();
 
-      if (!pets) {
+      if (!pets.length) {
         return res.status(400).json({ message: "Tutor has no pets" });
       }
 

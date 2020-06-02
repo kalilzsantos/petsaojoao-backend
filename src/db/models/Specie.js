@@ -12,4 +12,8 @@ export default class Specie extends Model {
       { sequelize, tableName: "species", modelName: "Specie" }
     );
   }
+
+  static associate(models) {
+    Specie.hasMany(models.Breed);
+  }
 }
