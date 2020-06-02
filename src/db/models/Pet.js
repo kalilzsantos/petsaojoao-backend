@@ -73,7 +73,7 @@ export default class Pet extends Model {
       ),
     });
   }
-  
+
   static associate(models) {
     Pet.hasMany(models.PetPhoto);
   }
