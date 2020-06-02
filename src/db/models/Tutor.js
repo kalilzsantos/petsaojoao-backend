@@ -55,7 +55,7 @@ export default class Tutor extends Model {
       ),
     });
   }
-  
+
   static associate(models) {
     Tutor.hasMany(models.Pet);
   }
