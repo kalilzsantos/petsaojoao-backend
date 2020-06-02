@@ -13,7 +13,7 @@ export default {
 
       const breeds = await specie.getBreeds();
 
-      if (!breeds) {
+      if (!breeds.length) {
         return res.status(400).json({ message: "Specie has no breeds" });
       }
 

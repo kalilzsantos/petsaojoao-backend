@@ -6,13 +6,13 @@ export default {
     try {
       const pet = await models.Pet.findByPk(petId);
 
-      if (!petId) {
+      if (!pet) {
         return res.status(400).json({ message: "Pet does not exists" });
       }
 
       const photos = await pet.getPetPhotos();
 
-      if (!photos) {
+      if (!photos.length) {
         return res.status(400).json({ message: "Pet has no photos" });
       }
 

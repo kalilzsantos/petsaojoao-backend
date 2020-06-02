@@ -10,7 +10,7 @@ const routes = express.Router();
 routes.post("/tutors", TutorController.store);
 routes.get("/tutors/:tutorId", TutorController.show);
 routes.get("/species", SpecieController.index);
-routes.get("/species/:specidId/breeds", BreedController.index);
+routes.get("/species/:specieId/breeds", BreedController.index);
 routes.post("/tutors/:tutorId/pets", PetController.store);
 routes.get("/tutors/:tutorId/pets", PetController.index);
 routes.post("/pets/:petId/photos", PetPhotoController.store);
