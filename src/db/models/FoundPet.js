@@ -5,7 +5,7 @@ export default class FoundPet extends Model {
     return super.init(
       {
         tutor_id: {
-          type: Sequelize.INTEGER,
+          type: DataTypes.INTEGER,
           references: {
             model: "tutors",
             key: "id",
@@ -13,19 +13,19 @@ export default class FoundPet extends Model {
           allowNull: false,
         },
         anonymous: {
-          type: Sequelize.BOOLEAN,
+          type: DataTypes.BOOLEAN,
           allowNull: false,
         },
         lat: {
-          type: Sequelize.DOUBLE,
+          type: DataTypes.DOUBLE,
           allowNull: false,
         },
         lng: {
-          type: Sequelize.DOUBLE,
+          type: DataTypes.DOUBLE,
           allowNull: false,
         },
         note: {
-          type: Sequelize.TEXT,
+          type: DataTypes.TEXT,
           allowNull: true,
         },
       },
