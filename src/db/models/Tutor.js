@@ -1,4 +1,5 @@
 import { Model } from "sequelize";
+import { getDateToday } from "../../utils/date";
 
 export default class Tutor extends Model {
   static init(sequelize, DataTypes) {
@@ -39,6 +40,20 @@ export default class Tutor extends Model {
       },
       { sequelize, tableName: "tutors", modelName: "Tutor" }
     );
+  }
+
+  static getTotal() {
+    return Tutor.count();
+  }
+
+  static getTotalToday() {
+    return Tutor.count({
+      where: Tutor.sequelize.where(
+        Tutor.sequelize.fn("date", Tutor.sequelize.col("created_at")),
+        "=",
+        getDateToday()
+      ),
+    });
   }
 
   static associate(models) {
