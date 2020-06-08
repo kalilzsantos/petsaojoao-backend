@@ -4,7 +4,7 @@ export default {
   async index(req, res) {
     const { id } = req.params;
     try {
-      const pet = await models.FoundPet.findByPk(petId);
+      const pet = await models.FoundPet.findByPk(id);
 
       if (!pet) {
         return res.status(400).json({ message: "Found Pet does not exists" });
