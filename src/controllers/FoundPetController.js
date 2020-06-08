@@ -17,11 +17,12 @@ class FoundPetController {
         .json({ error: "Bad Request. Missing or wrong data!" });
     }
     try {
-
-      const {id} = await FoundPet.create(req.body);
+      const { id } = await FoundPet.create(req.body);
       //call notification service here
 
-      return res.status(201).json({ succes: 'Found Pet created successfully!' });
+      return res
+        .status(201)
+        .json({ succes: "Found Pet created successfully!" });
     } catch (err) {
       return res.status(500).json({ err });
     }
@@ -31,7 +32,7 @@ class FoundPetController {
     console.log(id);
     try {
       const fPet = await FoundPet.findByPk(id);
-      console.log(fPet)
+      console.log(fPet);
       if (!fPet) {
         return res.status(404).json({ error: "Pet not found!" });
       }
