@@ -21,7 +21,7 @@ class FoundPetController {
         return res.status(404).json({ error: "Pet not found!" });
       }
 
-      return res.status(200).json(fPet);
+      return res.json(fPet);
     } catch (error) {
       return res.json({ error });
     }
