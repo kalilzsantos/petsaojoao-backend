@@ -3,9 +3,9 @@ import models from "../db/models";
 export default {
   async show(req, res) {
     try {
-      const { registerId } = req.parms;
+      const { registerContactId } = req.parms;
 
-      const register = await models.Register.findByPk(registerId);
+      const register = await models.Register.findByPk(registerContactId);
 
       if (!register) {
         return res.status(400).json({ message: "Register does not exists" });
@@ -18,9 +18,9 @@ export default {
   },
   async store(req, res) {
     try {
-      const { registerId } = req.body;
+      const { registerContactId } = req.body;
       const [register] = await models.Register.findOrCreate({
-        where: { registerId },
+        where: { registerContactId },
         defaults: req.body,
       });
 
