@@ -1,1 +1,1 @@
-"web: yarn start:dev"
+"web: docker-compose up --build"
