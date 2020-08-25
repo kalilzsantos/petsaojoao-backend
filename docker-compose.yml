@@ -3,7 +3,7 @@ services:
   node:
     build:
       context: .
-      dockerfile: .docker/$NODE_ENV/node.dockerfile
+      dockerfile: .docker/production/node.dockerfile
     environment:
       NODE_ENV: $NODE_ENV
       DB_HOST: $DB_HOST
@@ -37,7 +37,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: $PGADMIN_EMAIL
       PGADMIN_DEFAULT_PASSWORD: $PGADMIN_PASSWORD
     ports:
-      - '15432:80'
+      - '5432:80'
     volumes:
       - pgadmin4-volume:/var/lib/pgadmin
     networks:
